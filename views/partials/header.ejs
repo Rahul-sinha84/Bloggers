@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Blog Site</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link rel="stylesheet" href="/app.css">
+    </head>
+    <body>
+        
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <a class="navbar-brand" href="/"><img src="https://img.icons8.com/ios-filled/50/000000/sugar-cubes.png"/> Bloggers</a>
+          
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+              <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <li class="nav-item active">
+                  <a class="nav-link" href="/blogs">All Blogs<span class="sr-only">(current)</span></a>
+                </li>  
+              </ul>
+              <div class="ml-auto mt-2 mt-lg-0">
+                <ul class="navbar-nav">
+                <% if(currentUser){ %>
+                  <span class="navbar-text">
+                    Signed in as @<%= currentUser.username %>
+                  </span>  
+                  <li class="nav-item">
+                    <a class="nav-link" href="/logout">Logout</a>
+                  </li>
+                <% }else{ %>                   
+                    <li class="nav-item">
+                      <a class="nav-link" href="/login">Login</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="/signin">Signin</a>
+                    </li>
+                  <%}%>
+                  </ul>  
+              </div>
+            </div>
+          </nav>
+          <%if(error && error.length>0){ %>
+            <div class="container">
+              <div class="alert alert-danger alert-dismissible fade show">
+                <%= error %>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+            </div>  
+              
+          <% }else if(success && success.length>0){ %>
+            <div class="container">
+              <div class="alert alert-success alert-dismissible fade show">
+                <%= success %>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+            </div>  
+          <% }if(warning && warning.length>0){ %>
+            <div class="container">
+              <div class="alert alert-warning alert-dismissible fade show">
+                <%= warning %>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+            </div>  
+          <% } %>    

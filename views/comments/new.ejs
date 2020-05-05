@@ -1,0 +1,18 @@
+<%- include("../partials/header.ejs") %>
+    <div class="container">
+        <div id="commentEdit">
+            <h3>Comments Page</h3>
+                
+                <form action="/blogs/<%= blog._id %>/comments" method="POST">
+                    <div class="form-group">
+                        <input type="text" name="text" class="form-control" placeholder="Your views about this post...">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button><br>
+                    <a href="/blogs/<%= blog._id %>" id="goBack">Go back</a>
+                </form>
+        </div>
+        
+    </div>    
+        
+
+<%- include("../partials/footer.ejs") %>

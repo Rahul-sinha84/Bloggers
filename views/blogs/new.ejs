@@ -1,0 +1,28 @@
+<%- include("../partials/header.ejs") %>
+
+    <div class="container">
+        <div class="card Form">
+            <h3 class="text-center">Enter the following informations....</h3>
+            <form action="/blogs" method="POST">
+                
+                    <div class="form-group">
+                        <input type="text" placeholder="Title" name="blogs[title]" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" placeholder="Image URL" name="blogs[image]" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <textarea placeholder="About it..." name="blogs[description]" rows="5" class="form-control"></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-success">Submit</button>
+                    
+                    
+                    
+            </form>
+        </div>    
+            
+    </div>
+        
+
+<%- include("../partials/footer.ejs") %>

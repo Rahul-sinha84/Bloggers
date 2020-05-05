@@ -1,0 +1,86 @@
+body{
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+    background: #BBD2C5;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #292E49, #536976, #BBD2C5);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #292E49, #536976, #BBD2C5); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    position: relative;
+}
+.Form{
+    margin: 6.25% 25% auto 25%;
+    padding: 30px;
+    background-color:rgba(221, 207, 207, 0.89);
+    background: #232526;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #414345, #232526);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #414345, #232526); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    color: white;
+}
+.blogs1{
+    margin: 20px 0 100px 0;
+    padding: 5px;
+    border:1px solid gold;
+    color: white;
+    background: #000000;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #434343, #000000);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #434343, #000000); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+#goBack{
+    margin:20px auto 0px auto;
+}
+#addComment{
+    float: right;
+}
+#showImage{
+    width: 100%;
+    height: 100%;
+}
+.blogShow{
+    margin: 20px 0 100px 0;
+    padding: 5px;
+    border: 1px solid dimgray;
+    background-color: white;
+}
+#commentsShow{
+    border:1px solid dimgray;
+    padding: 5px;
+    margin: 20px 0 100px 0;
+    background-color: white;
+    height: 86.5%; 
+}
+#delete{
+    display: inline;
+}
+#commentEdit{
+    border: 1px solid dimgray;
+    margin: 6.25% 25% auto 25%; 
+    padding: 10px;
+    background-color: whitesmoke;
+    background: #232526;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #414345, #232526);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #414345, #232526); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    color: white;
+}
+.footer{
+    margin:100px 0 0 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    padding: 2px;
+    background-color: rgba(0, 0, 0, 0.842);
+    color: white;
+    
+}
+#commentDeleteButton{
+    display: inline;
+    float:  right;
+}
+.indexJumbotron{
+    background: #000000;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #434343, #000000);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #434343, #000000); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    border: 1px solid black;
+    color: white;
+    padding: 20px;   
+}
+

@@ -14,7 +14,8 @@ var blogsRoutes     = require("./routes/blogs"),
     user            = require("./models/users");
 
 mongoose.set('useUnifiedTopology',true);
-mongoose.connect("mongodb+srv://rahulsinha84:rahulsinha84@yelpcamp-hyycr.mongodb.net/test?retryWrites=true&w=majority",{useNewUrlParser:true});
+// mongoose.connect("mongodb://localhost/my_blogs",{useNewUrlParser:true});
+mongoose.connect("mongodb+srv://rahulsinha84:rahulsinha84@bloggers-ezuin.mongodb.net/test?retryWrites=true&w=majority",{useNewUrlParser:true});
 var app = express();
 app.use(bodyParser.urlencoded({extended:true}));
 app.set('view engine','ejs');
@@ -43,6 +44,7 @@ app.use(function(req,res,next){
     res.locals.error        = req.flash("error");
     res.locals.success      = req.flash("success");
     res.locals.warning      = req.flash("warning");
+    res.locals.primary      = req.flash("primary");
     next();
 });
 app.use("/blogs",blogsRoutes);

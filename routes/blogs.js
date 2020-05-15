@@ -6,17 +6,40 @@ var     express     = require("express"),
         methodOverride  = require("method-override");
 
 route.use(methodOverride("_method"));
+//for fuzzy-searching.....
+function escapeRegex(text) {
+    return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
+};
+
 
 //INDEX Template
-route.get("/",function(req,res){
-    blogs.find({},function(err,blogs){
-        if(err){
-            console.log(err);
-            res.redirect("back");
-        }else{
-            res.render("blogs/index",{blogs:blogs});
-        }
-    })
+route.get("/",function(req,res){    
+    if(req.query.search){
+        const regex = new RegExp(escapeRegex(req.query.search), 'gi');
+        blogs.find({title:regex},function(err,blogs){
+            if(err){
+                console.log(err);
+                res.redirect("back");
+            }else{
+                if(blogs.length<1){
+                    req.flash("error","Your search didn't match with our blogs!");
+                    return res.redirect("back");
+                }
+                res.render("blogs/index",{blogs:blogs});
+            }
+        });
+    }else{
+        blogs.find({},function(err,blogs){
+            if(err){
+                console.log(err);
+                res.redirect("back");
+            }else{
+                res.render("blogs/index",{blogs:blogs});
+            }
+        });
+    }    
+        
+        
 });
 //NEW Template
 route.get("/new",middleware.isLoggedIn,function(req,res){

@@ -4,6 +4,7 @@
         <title>Blog Site</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
         <link rel="stylesheet" href="/app.css">
+        <link href="https://fonts.googleapis.com/css2?family=Titillium+Web&display=swap" rel="stylesheet">
     </head>
     <body>
         
@@ -19,12 +20,21 @@
                   <a class="nav-link" href="/blogs">All Blogs<span class="sr-only">(current)</span></a>
                 </li>  
               </ul>
+              <form class="form-inline" action="/blogs" method="GET">
+                <input class="form-control mr-lg-2" type="text" name="search" placeholder="Search for the title">
+                <input type="submit" class="btn btn-outline-warning" value="Search">
+              </form>
               <div class="ml-auto mt-2 mt-lg-0">
                 <ul class="navbar-nav">
                 <% if(currentUser){ %>
-                  <span class="navbar-text">
-                    Signed in as @<%= currentUser.username %>
-                  </span>  
+                    <span class="navbar-text">
+                      <% if(currentUser.firstName){ %>
+                      Signed in as <%= currentUser.firstName %>
+                      <% }else{ %>
+                        Signed in as @<%= currentUser.username %>
+                      <% } %>  
+                    </span>
+                  <a href="/user/<%= currentUser._id %>" class="nav-link active">Your profile</a>    
                   <li class="nav-item">
                     <a class="nav-link" href="/logout">Logout</a>
                   </li>
@@ -33,39 +43,40 @@
                       <a class="nav-link" href="/login">Login</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="/signin">Signin</a>
+                      <a class="nav-link" href="/signup">SignUp</a>
                     </li>
                   <%}%>
                   </ul>  
               </div>
             </div>
           </nav>
-          <%if(error && error.length>0){ %>
-            <div class="container">
-              <div class="alert alert-danger alert-dismissible fade show">
-                <%= error %>
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-            </div>  
-              
-          <% }else if(success && success.length>0){ %>
-            <div class="container">
-              <div class="alert alert-success alert-dismissible fade show">
-                <%= success %>
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-            </div>  
-          <% }if(warning && warning.length>0){ %>
-            <div class="container">
-              <div class="alert alert-warning alert-dismissible fade show">
-                <%= warning %>
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-            </div>  
-          <% } %>    
+          
+                <%if(error && error.length>0){ %>
+                  <div class="container">
+                    <div class="alert alert-danger alert-dismissible fade show">
+                      <%= error %>
+                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                  </div>  
+                    
+                <% }else if(success && success.length>0){ %>
+                  <div class="container">
+                    <div class="alert alert-success alert-dismissible fade show">
+                      <%= success %>
+                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                  </div>  
+                <% }if(warning && warning.length>0){ %>
+                  <div class="container">
+                    <div class="alert alert-warning alert-dismissible fade show">
+                      <%= warning %>
+                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                  </div>  
+                <% } %>    

@@ -1,0 +1,43 @@
+<%- include("../partials/header.ejs") %>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 profile">
+            <h1>Profile</h1>
+            <div class="about">
+                <% if(foundUser.firstName){ %>
+                    First name : <%= foundUser.firstName %><br>
+                    Last name  : <%= foundUser.lastName %><br>
+                    E-mail id  : <%= foundUser.email %><br>
+                    Username   : <%= foundUser.username %>
+                <% }else{ %>
+                    Sorry!!! <br> Either you didn't provide your information to us <br> or, this update has been done later....
+                <% } %>  
+            </div>
+                
+        </div>
+        <div class="col-md-3 profile">
+            <h4><u>Posts</u></h4>
+            <% if(blogs && blogs.length>0){ %>
+                <% blogs.forEach(function(blog){ %>
+                    
+                    <ul>
+                        <li>
+                            <h5><a href="/blogs/<%= blog._id %>" class="btn btn-link"><%= blog.title %></a></h5>
+                            <img class="img-thumbnail" width="200px" src="<%= blog.image %>" alt="something"><br>                          
+                        </li>
+                    </ul>    
+                        
+                <% }); %> 
+            <% }else{ %> 
+                <h5>You don't have any posts...</h5>
+            <% } %>          
+            
+        </div>    
+            
+
+    </div>
+
+</div>    
+    
+<%- include("../partials/footer.ejs") %>

@@ -1,14 +1,20 @@
 body {
     background-color: #000;
+    
 }
 #landing-header {
     z-index: 1;
-    position: relative;
+    position: relative;; 
     text-align: center;
     background-color: rgba(255, 255, 255, 0.486);
     color:black;
     border: 1px solid white;
-    margin: 38% 50% 0 4%;
+    margin: 75% 0 0 0;
+    
+}
+.homeAlert{
+  z-index: 1;
+  position: fixed;
 }
 .slideshow { 
     position: fixed;

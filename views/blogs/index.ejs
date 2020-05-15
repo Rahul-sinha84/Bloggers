@@ -7,31 +7,33 @@
         <a href="/blogs/new" class="btn btn-lg btn-warning">Add new Blog</a>
 
     </div>
-    <div class="container">
-        <% if(blogs.length>0){ %>    
-            <div class="blogs1">
-                <%   for(var i = 0;i<blogs.length;i++){   %>
-                    <div class="row">
-                        <div class="col-md-4">
-                            <img src="<%= blogs[i].image %>" class="img-fluid">
+    <div class="row justify-content-md-center">
+        <div class="col-md-12 col-lg-9">
+            <% if(blogs.length>0){ %>    
+                <div class="blogs1">
+                    <%   for(var i = 0;i<blogs.length;i++){   %>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <img src="<%= blogs[i].image %>" class="img-fluid">
+                            </div>
+                            <div class="col-md-6">
+                                <h5><%=  blogs[i].title   %></h5>
+                        
+                                <p>
+                                    <%= blogs[i].description.substring(0,100) %>...
+                                </p>
+                                <a href="/blogs/<%= blogs[i]._id %>">More info</a>
+                            </div>
                         </div>
-                        <div class="col-md-6">
-                            <h5><%=  blogs[i].title   %></h5>
-                    
-                            <p>
-                                <%= blogs[i].description.substring(0,100) %>...
-                            </p>
-                            <a href="/blogs/<%= blogs[i]._id %>">More info</a>
-                        </div>
-                    </div>
-                    <% if(i!=blogs.length-1){ %>
-                    <hr>
+                        <% if(i!=blogs.length-1){ %>
+                        <hr id="indexhr">
+                        <% } %>
                     <% } %>
-                <% } %>
-            </div>
-        <% } %>     
+                </div>
+            <% } %>     
+        </div>    
+    </div>
+
         
-       
-    </div>    
   
 <%- include("../partials/footer.ejs") %>

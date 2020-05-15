@@ -83,4 +83,25 @@ body{
     color: white;
     padding: 20px;   
 }
-
+#editButton{
+    
+    margin-left: 45%;
+}
+.block{
+    float: right;
+}
+#indexhr{
+    background-color: rgba(224, 224, 224, 0.541);
+}
+.profile{
+    border: 1px solid white;
+    margin: 5% auto 10% auto;
+    width: 60%;
+    background-color: rgba(255, 255, 255, 0.61);
+}
+.about{
+    font-family: 'Titillium Web', sans-serif;
+    background-color: rgba(255, 255, 255, 0.658);
+    padding: 10px;
+    font-weight: bold;
+}

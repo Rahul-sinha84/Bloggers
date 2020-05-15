@@ -1,16 +1,24 @@
 <%- include("../partials/header.ejs") %>
 <div class="container">
     <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-8 col-lg-9">
             <div class="blogShow">
                 <img id="showImage" src="<%= blog.image %>">
                 <h4><%= blog.title %></h4>
                 <p>
                     <%=   blog.description   %>
-                    <span style="float: right;" class="text-muted">submitted by <%=  blog.user.username  %>,<%= moment(blog.createdAt).fromNow() %></span>
-                </p>
+                    <footer class="blockquote-footer block">submitted by <cite title="Source Title">
+                        <!-- checking for first name -->
+                        <% if(blog.user.firstName){ %>
+                           <a href="/user/<%= blog.user.id %>"><%= blog.user.firstName %></a> 
+                        <% }else{ %>    
+                            <a href="/user/<%= blog.user.id %>" ><%= blog.user.username %></a>
+                        <% } %>    
+                    </cite>, <%= moment(blog.createdAt).fromNow() %></footer>
+                   
+                </p><br>
                 
-                <% if(currentUser && blog.user.id.equals(currentUser._id)){ %>    
+                <% if(currentUser && blog.user.id.equals(currentUser._id) || currentUser && currentUser.isAdmin){ %>    
                     <a href="/blogs/<%= blog._id %>/edit" class="btn btn-outline-warning">Edit</a>
                     <form action="/blogs/<%= blog._id %>?_method=DELETE" method="POST" id="delete">
                         <button class="btn btn-outline-danger">Delete</button>
@@ -18,18 +26,22 @@
                 <% } %>    
             </div>    
         </div>
-        <div class="col-md-4">
+        <div class="col-md-4 col-lg-3">
             <div id="commentsShow">
                 <!-- COMMENTS -->
                 <a href="/blogs/<%= blog._id %>/comments/new" id="addComment" class="btn btn-info">Add Comment</a><br><hr>
                 <% blog.comments.forEach(function(comment){ %>
     
-                    <span><b><%= comment.author.username %></b>   <span style="float: right;"><%=  moment(comment.createdAt).fromNow()  %></span></span>
+                    <span><b>
+                           
+                        <%= comment.author.username %>
+                      
+                    </b>   <span style="float: right;"><%=  moment(comment.createdAt).fromNow()  %></span></span>
                     <p>
                         <%= comment.text %>
                     </p>
-                    <%  if(currentUser && comment.author.id.equals(currentUser._id)){  %>
-                    <a href="/blogs/<%= blog._id %>/comments/<%= comment._id %>/edit" class="btn btn-warning btn-sm">Edit</a>
+                    <%  if(currentUser && comment.author.id.equals(currentUser._id) || currentUser && currentUser.isAdmin){  %>
+                    <a href="/blogs/<%= blog._id %>/comments/<%= comment._id %>/edit" class="btn btn-warning btn-sm" id="editButton">Edit</a>
                     <form action="/blogs/<%=  blog._id  %>/comments/<%= comment._id %>/delete?_method=DELETE" method="POST" id="commentDeleteButton">
                         <button class="btn btn-danger btn-sm">Delete</button>
                     </form>

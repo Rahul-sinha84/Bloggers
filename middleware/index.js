@@ -15,7 +15,7 @@ middleware.blogOwnership = function(req,res,next){
             if(err){
                 res.redirect("back");
             }else{
-                if(blog.user.id.equals(req.user._id)){
+                if(blog.user.id.equals(req.user._id) || req.user.isAdmin){
                     next();
                 }else{
                     res.redirect("back");
@@ -33,7 +33,7 @@ middleware.commentOwnership = function(req,res,next){
             if(err){
                 res.redirect("back");
             }else{
-                if(comment.author.id.equals(req.user._id)){
+                if(comment.author.id.equals(req.user._id) || req.user.isAdmin){
                     next();
                 }
                 else{
